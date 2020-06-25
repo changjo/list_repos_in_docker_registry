@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 import requests
 import argparse
 
@@ -60,7 +63,7 @@ def list_all():
     requests.urllib3.disable_warnings()
     data = {}
 
-    url = args.url + '/v2/_catalog' 
+    url = args.url + '/v2/_catalog'
     response = requests.get(url, verify=False)
     repos = response.json()['repositories']
     for repo in repos:
@@ -68,7 +71,7 @@ def list_all():
         response = requests.get(url, verify=False)
         response_json = response.json()
         if 'errors' not in response_json:
-            tags = response.json()['tags']
+            tags = response_json['tags']
             data[repo] = tags
 
     show(data)
