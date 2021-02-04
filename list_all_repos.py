@@ -31,18 +31,14 @@ def show(data):
 
     result.append(equals)
     result.append('Registry URL: {}'.format(args.url))
-    result.append('{:30}{}'.format('Repository', 'Tags'))
+    result.append('{}:{}'.format('Repository', 'Tags'))
     result.append(equals)
     repos = sorted(data.keys())
     for repo in repos:
         tags = sorted(data[repo])
         first_tag = True
         for tag in tags:
-            if first_tag:
-                result.append('{:30}{}'.format(repo, tag))
-                first_tag = False
-            else:
-                result.append('{:30}{}'.format('', tag))
+            result.append('{}:{}'.format(repo, tag))
         result.append(dashes)
     result.append(equals)
 
